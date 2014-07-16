@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+$(function () {    
+var first = [{name: 'A',y:20},{name:'B',y:10},{name:'E',y:40}]
+var second = [{name: 'D',y:10},{name: 'C',y:30},{name: 'A',y:10},{name: 'B',y:20}]
+
+var newsecond = [];
+var names  = [];
+for(i in first)
+  names.push(first[i].name)
+  
+ for(i in second)
+   if (names.indexOf(second[i].name) == -1 )
+     names.push(second[i].name)
+var flag;	 
+for(i in names) {
+ flag = 0;
+ for(j in first) 
+  if(first[j].name == names[i]) {
+      flag = 1
+	  break;
+  }
+
+  if(flag == 0)
+     first.push({name:names[i], y:0})
+	 
+  flag = 0;	 
+  var obj;
+  for(j in second) 
+  if(second[j].name == names[i]) {
+      obj = second[j]
+      flag = 1
+	  break;
+  }
+
+
+  if(flag == 0)
+     newsecond.push({name:names[i], y:0})
+  else
+     newsecond.push(obj)  
+	 	 
+  
+
+}
+  second = newsecond
+console.log(first)
+console.log(second)  
+	 
+/*
+for(i in all) {
+ var name = all[i].name
+ var flag = 0;
+ for(j in first) 
+  if(all[i].name == first[j].name) {
+      flag = 1
+	  break;
+  }	  
+ if(flag == 0)
+   first.push(all[i])
+   
+ flag = 0
+ var obj;
+ for(j in second) 
+  if(all[i].name == second[j].name) {
+      flag = 1
+	  obj = second[j]
+	  break;
+  }
+  
+ if(flag == 1)
+   newsecond.push(obj)
+ else
+   newsecond.push(all[i])
+ 
+ 
+}
+*/
+//console.log(first)
+//console.log(newsecond)
+ 
+
+});
+</script>
+</head>
+<body>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript" src="matson/drilldown.js"></script>  
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+</body>
+</html>
