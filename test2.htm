@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://github.highcharts.com/bdf6471/highcharts.js"></script>
+<script src="http://github.highcharts.com/bdf6471/modules/drilldown.src.js"></script>
+<script src="http://localhost:9500/javascripts/highcharts/exporting.src.js"></script>
+<script>
+$(function () {    
+    var options = {
+		chart: {
+			renderTo: 'container',
+			type: 'column',
+			events: {
+                drilldown: function (e) {
+                    if (!e.seriesOptions) {
+					  
+					}
+				}
+			}	
+		},
+		credits: {
+			enabled: false
+		},
+		title: {
+                text: 'Shipment Volume',
+				style: {
+				 fontSize: '11px',
+				 fontWeight: 'bold',
+				 fontFamily: 'Verdana, sans-serif'
+				}
+            },
+	   exporting:{
+				enabled:false
+	   },
+		tooltip: {
+				enabled: false
+		},	   
+		xAxis: {
+			//categories: [{}]
+			  type: 'category'
+		},
+		yAxis: {
+               
+				
+				
+				title: {
+                    text: 'FEU'
+                }
+			
+            },
+			
+            legend: {
+                backgroundColor: '#FFFFFF',
+                reversed: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+				   series: {
+                pointPadding: 0,
+                groupPadding: 0.1
+            }
+            },
+			exporting: {
+		
+            buttons: {
+                contextButton: {
+                    enabled: false
+					
+                },
+                customButton: {
+                    text: 'AIR',
+                    title: 'some_key',
+					_id: 'myButton',
+					theme: {
+                    'stroke-width': 1,
+                    stroke: 'silver',
+                    r: 5,
+                    fill: '#5bc0de',
+                    states: {
+                        hover: {
+                            fill: '#5bc0de',
+							cursor:'hand'
+                        },
+                        select: {
+                            stroke: '#039',
+                            fill: '#5bc0de'
+                        }
+                    }
+                    },
+                    onclick: function () {
+                      while(this.series.length > 0)
+                       this.series[0].remove(true);
+					   
+								 
+                    },
+					x: 0,
+					y: 0,
+					align: 'left',
+					width: 48
+                },
+				origDestButton: {
+                    text: 'Orig-Dest',
+                    title: 'some_key',
+					_id: 'myButton',
+					theme: {
+                    'stroke-width': 1,
+                    stroke: 'silver',
+                    r: 5,
+                    fill: '#5bc0de',
+                    states: {
+                        hover: {
+                            fill: '#5bc0de',
+							cursor:'hand'
+                        },
+                        select: {
+                            stroke: '#039',
+                            fill: '#5bc0de'
+                        }
+                    }
+                    },
+                    onclick: function () {
+                      while(this.series.length > 0)
+                       this.series[0].remove(true);
+					   
+								 
+                    },
+					x: 50,
+					y: 0,
+					align: 'left',
+					width: 50
+                }
+            },
+            url: 'url(#highcharts-7)'			
+        },
+		series: [{},{}],
+		drilldown: {
+            series: []
+        }
+	}
+    //options.xAxis.categories = ['Chennai','Mumbai','Kolkata','Delhi'];	
+	options.series[0].name = '2014';
+   	options.series[0].data = [10,20,30,40]
+		
+	options.series[1].name = '2014';
+   	options.series[1].data = [20,40,60,80]
+	var chart = new Highcharts.Chart(options);
+});
+
+</script>
+</head>
+<body>
+
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/drilldown.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+
+</body>
+</html>
